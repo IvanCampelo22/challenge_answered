@@ -2,24 +2,26 @@ Code Review - Bot de exportação de usuários
 
 1- Exibição de Informações no Termina
 
-Inicialmente, é possível identificar diversos pontos de melhoria no código, especialmente no laço de repetição localizado por volta da linha 60 do arquivo bot.py. Observa-se o uso excessivo de print, o que além de desnecessário para esse tipo de aplicação, impacta negativamente a qualidade e a performance do código.
-
+Inicialmente, é possível identificar diversos pontos de melhoria no código, especialmente no laço de repetição localizado por volta da linha 60 do arquivo bot.py. 
+Observa-se o uso excessivo de print, o que além de desnecessário para esse tipo de aplicação, impacta negativamente a qualidade e a performance do código. 
 O uso de print implica em bloqueio de I/O, flush de buffer, sincronização de threads, formatação de strings e manipulação do destino de saída, o que se torna custoso em aplicações que realizam processamento intensivo ou recorrente. 
-
-Para esses cenários, a abordagem correta é a utilização de um logger. Para simplificação e melhor controle, recomenda-se a utilização da biblioteca Loguru, mantendo a configuração do logger em um módulo separado e apenas importando-o nos pontos necessários. 
-
-Um uso apropriado de print pode ser observado na função greetings, na linha 35 do mesmo arquivo, onde é exibido apenas um banner visual. Esse tipo de saída não representa informação de sistema e, portanto, é um dos poucos casos em que o uso de print é aceitável. 
+Para esses cenários, a abordagem correta é a utilização de um logger. Para simplificação e melhor controle, recomenda-se a utilização da biblioteca Loguru, mantendo a configuração do logger em um módulo
+separado e apenas importando-o nos pontos necessários. Um uso apropriado de print pode ser observado na função greetings, na linha 35 do mesmo arquivo, onde é exibido apenas um banner visual. Esse tipo de saída não representa informação de sistema e, portanto, 
+é um dos poucos casos em que o uso de print é aceitável. 
 
 2- Organização do Código
 
-Apesar de se tratar de um projeto simples, é importante manter boas práticas visando escalabilidade e manutenção futura. Nesse sentido, o arquivo bot.py concentra responsabilidades em excesso e deve ser segregado. 
+Apesar de se tratar de um projeto simples, é importante manter boas práticas visando escalabilidade e manutenção futura. 
+Nesse sentido, o arquivo bot.py concentra responsabilidades em excesso e deve ser segregado. 
 
 Sugestão de reorganização: 
 
 bot.py
 Deve conter apenas a classe responsável pelas funções do robô.
+
 session.py
 Responsável por inicializar e gerenciar a conexão com o banco de dados. Atualmente essa lógica encontra-se indevidamente dentro do método main em bot.py
+
 main.py
 Deve conter apenas a inicialização da aplicação, carregamento de configurações e execução das rotinas do robô, evitando misturar lógica de negócio, configuração de logging e conexão com o banco em um único arquivo. 
 
@@ -36,7 +38,8 @@ bots/
 
 4- Nomenclatura
 
-A nomenclatura atual das funções é deficiente e prejudica a legibilidade. Por exemplo, a função task1 (linha 41 de bot.py) não descreve sua responsabilidade real, que é a exportação dos dados da tabelas users para um arquivo Excel. 
+A nomenclatura atual das funções é deficiente e prejudica a legibilidade. Por exemplo, a função task1 (linha 41 de bot.py) não descreve sua 
+responsabilidade real, que é a exportação dos dados da tabelas users para um arquivo Excel. 
 
 Sugestão
 
@@ -46,6 +49,7 @@ Uma nomenclatura clara reduz a necessidade de comentários e facilita o entendim
 
 5- Dependências Externas
 
-Por último, as bibliotecas externas utilizadas encontram-se desatualizadas. É altamente recomendável revisar e atualizar as dependências definidas no Pipfile.lock, visando correções de segurança, compatibilidade e melhoria de performance. 
+Por último, as bibliotecas externas utilizadas encontram-se desatualizadas. É altamente recomendável revisar e atualizar as dependências definidas no Pipfile.lock, 
+visando correções de segurança, compatibilidade e melhoria de performance. 
 
 
