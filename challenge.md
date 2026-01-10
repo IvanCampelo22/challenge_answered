@@ -21,7 +21,7 @@ E por último, a terceira camada: encontra-se a estrutura técnica responsável 
 
 Com isso montei esse diagrama: 
 
-![Fluxograma Principal](diagrams/Fluxograma.jpg)
+![Fluxograma Principal](diagram_for_business_questions.jpg)
 
 
 A solução proposta possui algumas camadas de abstração, conforme demonstrado, exigindo uma arquitetura fragmentada, onde a regra de negócio não depende diretamente do framework para funcionar. 
@@ -35,7 +35,7 @@ Além disso permite que as camadas sejam testadas isoladamente. Ou seja, serviç
 
 Diagrama de exemplo: 
 
-
+![Fluxograma Principal](tech_diagram_for_first_tech.jpg)
 
 2.- Foi nos solicitado a criação de um relatório que mostre a utilização do serviço de lançamentos de foguetes separados por cada um dos nossos clientes em um intervalo de 30 dias. A nossa proposta para o desenvolvimento deste relatório é o de tentar evitar ao máximo algum impacto no fluxo de execução deste endpoint/api (de lançamento de foguetes), uma vez que este é o principal produto da empresa. 
 Com essas premissas em mente, o time propôs a utilização apenas das solicitações/requests em comum com o atual serviço e armazenar os dados necessários para o relatório utilizando uma base de dados paralela à base de dados do serviço de lançamentos.
@@ -91,7 +91,10 @@ async def launch(request: Request, schema: LaunchRequestBody = None,
 
 Apesar de entender que o Kafka é difundido para esse tipo de problema, vou aplicar a solução utilizando Celery/Redis, ferramenta a qual tenho conhecimento pleno.
 
-Fluxograma: 
+Diagrama: 
+
+![Fluxograma Principal](diagram_for_test_question.jpg)
+
 
 Exemplo básico de implementação: 
 
@@ -254,6 +257,11 @@ Por fim, embora o Príncipio da Substituição de Liskov esteja corretamente apl
  Tomando como base a estrutura do banco de dados fornecida (conforme diagrama [ER_diagram.png](https://github.com/shipay-pag/tech-challenges/blob/master/back_end/waimea/ER_diagram.png) e/ou script DDL [1_create_database_ddl.sql](https://github.com/shipay-pag/tech-challenges/blob/master/back_end/waimea/1_create_database_ddl.sql), disponibilizados no repositório do github) construa uma API REST em Python que irá criar um usuário. Os campos obrigatórios serão nome, e-mail e papel do usuário. A senha será um campo opcional, caso o usuário não informe uma senha o serviço da API deverá gerar essa senha automaticamente.
 
 6.- Ajude-nos fazendo o ‘Code Review’ do código de um robô/rotina que exporta os dados da tabela “users” de tempos em tempos. O código foi disponibilizado no mesmo repositório do git hub dentro da pasta [bot](https://github.com/shipay-pag/tech-challenges/tree/master/back_end/waimea/bot). ***ATENÇÃO: Não é necessário implementar as revisões, basta apenas anota-las em um arquivo texto ou em forma de comentários no código.***
+
+
+A análise detalhada do código do robô pode ser encontrada no arquivo abaixo:
+
+[Clique aqui para acessar o Code Review completo](code_review_bot.txt)
 
 7.- Qual ou quais Padrões de Projeto/Design Patterns você utilizaria para normalizar serviços de terceiros (tornar múltiplas interfaces de diferentes fornecedores uniforme), por exemplo serviços de disparos de e-mails, ou então disparos de SMS. ***ATENÇÃO: Não é necessário implementar o Design Pattern, basta descrever qual você utilizaria e por quais motivos optou pelo mesmo.***
 
