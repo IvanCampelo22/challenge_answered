@@ -265,4 +265,12 @@ A análise detalhada do código do robô pode ser encontrada no arquivo abaixo:
 
 7.- Qual ou quais Padrões de Projeto/Design Patterns você utilizaria para normalizar serviços de terceiros (tornar múltiplas interfaces de diferentes fornecedores uniforme), por exemplo serviços de disparos de e-mails, ou então disparos de SMS. ***ATENÇÃO: Não é necessário implementar o Design Pattern, basta descrever qual você utilizaria e por quais motivos optou pelo mesmo.***
 
+O padrão de projeto mais adequado para esse cenário é o Factory Method, combinado com o uso do Facade para a simplificação da API exposta à aplicação. 
+
+O Factory Method é responsável por criar e normalizar as instâncias dos diferentes provedores, garantindo que funcionalidades comuns sejam acessadas de forma uniforme, mesmo quando implementadas por serviços distintos. Para que essa abordagem funcione corretamente, o Princípio da Segregação de Interface (ISP) deve ser aplicado de forma rigorsa, assegurando que cada módulo dependa apenas das interfaces estritamente necessárias, evitando acoplamentos desnecessários entre componentes.
+
+O Facade entra como uma camada de abstração adicional, restringindo e organizando o acesso dos controllers aos serviços internos, fornecendo uma API mais simples, coesa e estável para o restante da aplicação.
+
+Essa combinação de padrões promove desacoplamento, extensibilidade, manutenabilidade e clareza arquiteturial, além de facilitar a substituição ou inclusão de novos forncedores sem impacto significativo no código existente.
+
 BOA SORTE!
