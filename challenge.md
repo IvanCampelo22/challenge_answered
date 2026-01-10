@@ -21,6 +21,7 @@ E por último, a terceira camada: encontra-se a estrutura técnica responsável 
 
 Com isso montei esse diagrama: 
 
+![Fluxograma Principal](diagrams/Fluxograma.jpg)
 
 
 A solução proposta possui algumas camadas de abstração, conforme demonstrado, exigindo uma arquitetura fragmentada, onde a regra de negócio não depende diretamente do framework para funcionar. 
