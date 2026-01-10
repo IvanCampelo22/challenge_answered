@@ -21,7 +21,7 @@ E por último, a terceira camada: encontra-se a estrutura técnica responsável 
 
 Com isso montei esse diagrama: 
 
-![Diagrama De Regra de Negócios](diagram_for_business_questions.jpg)
+![Diagrama De Regra de Negócios](diagrams/diagram_for_business_questions.jpg)
 
 
 A solução proposta possui algumas camadas de abstração, conforme demonstrado, exigindo uma arquitetura fragmentada, onde a regra de negócio não depende diretamente do framework para funcionar. 
@@ -35,7 +35,7 @@ Além disso permite que as camadas sejam testadas isoladamente. Ou seja, serviç
 
 Diagrama de exemplo: 
 
-![Diagrama Técnico](tech_diagram_for_first_tech.jpg)
+![Diagrama Técnico](diagrams/tech_diagram_for_first_tech.jpg)
 
 2.- Foi nos solicitado a criação de um relatório que mostre a utilização do serviço de lançamentos de foguetes separados por cada um dos nossos clientes em um intervalo de 30 dias. A nossa proposta para o desenvolvimento deste relatório é o de tentar evitar ao máximo algum impacto no fluxo de execução deste endpoint/api (de lançamento de foguetes), uma vez que este é o principal produto da empresa. 
 Com essas premissas em mente, o time propôs a utilização apenas das solicitações/requests em comum com o atual serviço e armazenar os dados necessários para o relatório utilizando uma base de dados paralela à base de dados do serviço de lançamentos.
@@ -93,7 +93,7 @@ Apesar de entender que o Kafka é difundido para esse tipo de problema, vou apli
 
 Diagrama: 
 
-![Diagrama de Solução de Teste](diagram_for_test_question.jpg)
+![Diagrama de Solução de Teste](diagrams/diagram_for_test_question.jpg)
 
 
 Exemplo básico de implementação: 
