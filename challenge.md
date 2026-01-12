@@ -262,7 +262,7 @@ Além disso, a solução foi desenvolvida seguindo princípios do SOLID e concei
 
 Todo o código-fonte está disponível no GitHub. Paralelamente, realizei o provisionamento manual de uma instância EC2 e um banco de dados RDS para viabilizar testes mais realistas da aplicação em ambiente de nuvem.
 
-Devido ao limite de tempo, não foi possível implementar uma pipeline de CI/CD com GitHub Actions. No entanto, a aplicação encontra-se totalmente operacional em ambiente Linux, utilizando Docker Compose para orquestração dos serviços e Nginx como servidor de aplicação e proxy reverso.
+Devido ao limite de tempo, não foi possível implementar uma pipeline de CI/CD com GitHub Actions. No entanto, a aplicação encontra-se totalmente operacional em ambiente Linux, utilizando Docker Compose para orquestração dos serviços e Nginx como servidor de aplicação.
 
 [Clique aqui para acessar a api](http://56.124.87.202/docs#/)
 Usuário para login:
