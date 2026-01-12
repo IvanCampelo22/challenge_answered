@@ -265,6 +265,7 @@ Todo o código-fonte está disponível no GitHub. Paralelamente, realizei o prov
 Devido ao limite de tempo, não foi possível implementar uma pipeline de CI/CD com GitHub Actions. No entanto, a aplicação encontra-se totalmente operacional em ambiente Linux, utilizando Docker Compose para orquestração dos serviços e Nginx como servidor de aplicação.
 
 [Clique aqui para acessar a api](http://56.124.87.202/docs#/)
+
 Usuário para login:
 
 > email: ivancampelo@gmail.com
