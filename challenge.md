@@ -8,7 +8,7 @@ Apesar de depender diretamente do consumo de múltiplas APIs de terceiros a resp
 Você pode verificar exemplos das APIs utilizadas em [requests_e_responses_apis_questao_1.json](https://github.com/shipay-pag/tech-challenges/blob/master/back_end/waimea/requests_e_responses_apis_questao_1.json).
 Descreva e detalhe como você implementaria o referido serviço? Não é necessário desenvolver o código a menos que você julgue necessário. Sinta-se a vontade para utilizar diagramas, desenhos, descrição textual, arquitetura, design patterns, etc.
 
-Apesar de possuir uma formulação conceitualmente simples, a abordabem adotada parte do princípio clássico da ciência da computação, difundido amplamente pelo Edsger Dijkstra: dividir um problema em partes e controláveis. 
+R - Apesar de possuir uma formulação conceitualmente simples, a abordabem adotada parte do princípio clássico da ciência da computação, difundido amplamente pelo Edsger Dijkstra: dividir um problema em partes e controláveis. 
 
 A partir dessa premissa o assunto foi dividido em 3 camadas principais: 
 
@@ -89,7 +89,7 @@ async def launch(request: Request, schema: LaunchRequestBody = None,
         raise HTTPException(status_code=500, detail=f'Error during launch...{exception.args[0]}')
 ```
 
-Apesar de entender que o Kafka é difundido para esse tipo de problema, vou aplicar a solução utilizando Celery/Redis, ferramenta a qual tenho conhecimento pleno.
+R - Apesar de entender que o Kafka é difundido para esse tipo de problema, vou aplicar a solução utilizando Celery/Redis, ferramenta a qual tenho conhecimento pleno.
 
 Diagrama: 
 
@@ -205,7 +205,7 @@ async def scheduler(request: Request, schema: RequestBody = None):
         raise HTTPException(status_code=500, detail=f'Error during scheduler event...{exception.args[0]}')
 ```
 
-Para garantir que a solução atenda às premissas estabelecidas no enunciado (especialmente a capacidade de suportar 1.000 requisições por segundo com P99 de 30ms) foi definida uma estratégia de testes composta por múltiplas camadas de validação.
+R- Para garantir que a solução atenda às premissas estabelecidas no enunciado (especialmente a capacidade de suportar 1.000 requisições por segundo com P99 de 30ms) foi definida uma estratégia de testes composta por múltiplas camadas de validação.
 
 Como ferramenta principal de execução do testes, foi escolhido o K6, que se destaca atualmente no mercado por sua eficiência em testes de perfomance e pela excelente integração com o ecossistema Grafana, permitindo visualização clara de métricas e acompanhamento detalhado do resultados. 
 
@@ -225,7 +225,7 @@ Essa abordagem permite avaliar não apenas desempenho, mas também robustez, pre
 
 4.- Você ficou responsável por mentorar um novo membro do time que além de novo na empresa possui o perfil de nível junior. Ele está finalizando o desenvolvimento de um novo microserviço e está com dúvidas quanto a possíveis implementações de "anti-patterns" em seu código e gostaria da sua avaliação... Quantos anti-patterns você consegue identificar no código dele (se é que existe algum), e caso tenha encontrado por qual motivo você categorizou a implementação como sendo um anti-pattern? *** O código a ser avaliado está disponibilizado no diretório [anti_patterns](https://github.com/shipay-pag/tech-challenges/tree/master/back_end/waimea/anti_patterns).
 
-De modo geral, o código apresentado demonstra boa organização e aplicação de princípios fundamentais de engenharia de software, especialmente os princípios do SOLID. Observa-se, por exemplo, a aplicação clara do Prinípio da Responsabilidade Única, evidenciada pela separação da camada de repositórios, evitando que outras partes do sistema lidem dieratamente com acesso a dados. Também é perceptível a aplicação adequada do Princípio da Substituição de Liskov (LSP) por meio da utilização de interfaces como IDatabase e IRepository, permitindo a troca de implementação sem impacto no restante do sistema.  
+R - De modo geral, o código apresentado demonstra boa organização e aplicação de princípios fundamentais de engenharia de software, especialmente os princípios do SOLID. Observa-se, por exemplo, a aplicação clara do Prinípio da Responsabilidade Única, evidenciada pela separação da camada de repositórios, evitando que outras partes do sistema lidem dieratamente com acesso a dados. Também é perceptível a aplicação adequada do Princípio da Substituição de Liskov (LSP) por meio da utilização de interfaces como IDatabase e IRepository, permitindo a troca de implementação sem impacto no restante do sistema.  
 
 Apesar desses pontos positivos, alguns anti-patterns relevantes podem ser identificados.
 
@@ -256,7 +256,7 @@ Por fim, embora o Príncipio da Substituição de Liskov esteja corretamente apl
 5.- ATENÇÃO: Caso você tenha escrito o código para responder a questão 1, por favor desconsiderar a questão 5 e nos encaminhe o código da questão 1 no lugar.
  Tomando como base a estrutura do banco de dados fornecida (conforme diagrama [ER_diagram.png](https://github.com/shipay-pag/tech-challenges/blob/master/back_end/waimea/ER_diagram.png) e/ou script DDL [1_create_database_ddl.sql](https://github.com/shipay-pag/tech-challenges/blob/master/back_end/waimea/1_create_database_ddl.sql), disponibilizados no repositório do github) construa uma API REST em Python que irá criar um usuário. Os campos obrigatórios serão nome, e-mail e papel do usuário. A senha será um campo opcional, caso o usuário não informe uma senha o serviço da API deverá gerar essa senha automaticamente.
 
-Para esta API REST, optei por uma arquitetura simples e bem estruturada, adotando um padrão de projeto que permite alta reutilização e facilidade de manutenção. O padrão escolhido foi o Factory Method, pois ele facilita a padronização de comportamentos e a expansão do sistema sem impactar os módulos existentes.
+R - Para esta API REST, optei por uma arquitetura simples e bem estruturada, adotando um padrão de projeto que permite alta reutilização e facilidade de manutenção. O padrão escolhido foi o Factory Method, pois ele facilita a padronização de comportamentos e a expansão do sistema sem impactar os módulos existentes.
 
 Além disso, a solução foi desenvolvida seguindo princípios do SOLID e conceitos de Arquitetura Limpa, garantindo baixo acoplamento, alta coesão e maior testabilidade do código.
 
@@ -280,13 +280,13 @@ Gostaria de destacar que existem alguns aprimoramentos planejados que, por limit
 6.- Ajude-nos fazendo o ‘Code Review’ do código de um robô/rotina que exporta os dados da tabela “users” de tempos em tempos. O código foi disponibilizado no mesmo repositório do git hub dentro da pasta [bot](https://github.com/shipay-pag/tech-challenges/tree/master/back_end/waimea/bot). ***ATENÇÃO: Não é necessário implementar as revisões, basta apenas anota-las em um arquivo texto ou em forma de comentários no código.***
 
 
-A análise detalhada do código do robô pode ser encontrada no arquivo abaixo:
+R - A análise detalhada do código do robô pode ser encontrada no arquivo abaixo:
 
 [Clique aqui para acessar o Code Review completo](code_review_bot.txt)
 
 7.- Qual ou quais Padrões de Projeto/Design Patterns você utilizaria para normalizar serviços de terceiros (tornar múltiplas interfaces de diferentes fornecedores uniforme), por exemplo serviços de disparos de e-mails, ou então disparos de SMS. ***ATENÇÃO: Não é necessário implementar o Design Pattern, basta descrever qual você utilizaria e por quais motivos optou pelo mesmo.***
 
-O padrão de projeto mais adequado para esse cenário é o Factory Method, combinado com o uso do Facade para a simplificação da API exposta à aplicação. 
+R - O padrão de projeto mais adequado para esse cenário é o Factory Method, combinado com o uso do Facade para a simplificação da API exposta à aplicação. 
 
 O Factory Method é responsável por criar e normalizar as instâncias dos diferentes provedores, garantindo que funcionalidades comuns sejam acessadas de forma uniforme, mesmo quando implementadas por serviços distintos. Para que essa abordagem funcione corretamente, o Princípio da Segregação de Interface (ISP) deve ser aplicado de forma rigorsa, assegurando que cada módulo dependa apenas das interfaces estritamente necessárias, evitando acoplamentos desnecessários entre componentes.
 
