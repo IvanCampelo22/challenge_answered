@@ -256,6 +256,25 @@ Por fim, embora o Príncipio da Substituição de Liskov esteja corretamente apl
 5.- ATENÇÃO: Caso você tenha escrito o código para responder a questão 1, por favor desconsiderar a questão 5 e nos encaminhe o código da questão 1 no lugar.
  Tomando como base a estrutura do banco de dados fornecida (conforme diagrama [ER_diagram.png](https://github.com/shipay-pag/tech-challenges/blob/master/back_end/waimea/ER_diagram.png) e/ou script DDL [1_create_database_ddl.sql](https://github.com/shipay-pag/tech-challenges/blob/master/back_end/waimea/1_create_database_ddl.sql), disponibilizados no repositório do github) construa uma API REST em Python que irá criar um usuário. Os campos obrigatórios serão nome, e-mail e papel do usuário. A senha será um campo opcional, caso o usuário não informe uma senha o serviço da API deverá gerar essa senha automaticamente.
 
+Para esta API REST, optei por uma arquitetura simples e bem estruturada, adotando um padrão de projeto que permite alta reutilização e facilidade de manutenção. O padrão escolhido foi o Factory Method, pois ele facilita a padronização de comportamentos e a expansão do sistema sem impactar os módulos existentes.
+
+Além disso, a solução foi desenvolvida seguindo princípios do SOLID e conceitos de Arquitetura Limpa, garantindo baixo acoplamento, alta coesão e maior testabilidade do código.
+
+Todo o código-fonte está disponível no GitHub. Paralelamente, realizei o provisionamento manual de uma instância EC2 e um banco de dados RDS para viabilizar testes mais realistas da aplicação em ambiente de nuvem.
+
+Devido ao limite de tempo, não foi possível implementar uma pipeline de CI/CD com GitHub Actions. No entanto, a aplicação encontra-se totalmente operacional em ambiente Linux, utilizando Docker Compose para orquestração dos serviços e Nginx como servidor de aplicação e proxy reverso.
+
+[Clique aqui para acessar a api](http://56.124.87.202/docs#/)
+Usuário para login:
+
+> email: ivancampelo@gmail.com
+> password: A1b2c3d4@.
+
+[Clique aqui para acessar o código no github](https://github.com/IvanCampelo22/shipay_rest_api)
+
+Gostaria de destacar que existem alguns aprimoramentos planejados que, por limitações de tempo, não puderam ser implementados nesta versão da solução. Entre eles, a inclusão de testes unitários, com o objetivo de elevar o nível de confiabilidade e segurança do código. A implementação de um mecanismo de cache básico nos endpoints de filtros e listagens, reduzindo significativamente o tempo de resposta e a carga sobre o banco de dados. E a configuração de um domínio próprio com DNS, possibilitando a integração com serviços de segurança e performance como o Cloudflare, além de serviços de mensageria como o AWS SES para envio de notificações por e-mail.
+
+
 6.- Ajude-nos fazendo o ‘Code Review’ do código de um robô/rotina que exporta os dados da tabela “users” de tempos em tempos. O código foi disponibilizado no mesmo repositório do git hub dentro da pasta [bot](https://github.com/shipay-pag/tech-challenges/tree/master/back_end/waimea/bot). ***ATENÇÃO: Não é necessário implementar as revisões, basta apenas anota-las em um arquivo texto ou em forma de comentários no código.***
 
 
